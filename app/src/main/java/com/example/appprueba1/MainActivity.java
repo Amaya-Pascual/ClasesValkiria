@@ -1,5 +1,6 @@
 package com.example.appprueba1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == ACTIVITY_TWO && resultCode== Activity.RESULT_OK){
+            texto.setText("Has clicado: "+ data.getIntExtra("result",-1)+ " veces");
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         boton = findViewById(R.id.boton1);
         texto = findViewById(R.id.textoInicio);
         boton.setText("Ir al contador");
+
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,14 +40,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-       super.onActivityResult(requestCode,resultCode,data);
-       if(requestCode == ACTIVITY_TWO){
-           texto.setText("Has clicado: "+ resultCode+ " veces");
-       }
 
-    }
 }
 

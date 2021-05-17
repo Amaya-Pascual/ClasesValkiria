@@ -1,5 +1,7 @@
 package com.example.appprueba1;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,11 +52,11 @@ public class Activity2 extends AppCompatActivity {
         botonSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(contadorClic);
+                Intent returnIntent= new Intent();
+                returnIntent.putExtra("result",contadorClic );
+                setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
         });
-
-
     }
 }
