@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AppPrueba1</string>
+    <string name="initial_text">Hola</string>
+    <string name="boton1">Boton1</string>
+    <string name="btnSalir">Salir</string>
+</resources>
