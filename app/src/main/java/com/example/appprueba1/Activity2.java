@@ -49,6 +49,7 @@ public class Activity2 extends AppCompatActivity {
                 texto.setText("Boton clicado "+ contadorClic + " veces");
             }
         });
+
         botonSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

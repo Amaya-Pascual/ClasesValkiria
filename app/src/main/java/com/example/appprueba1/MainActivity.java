@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private int ACTIVITY_TWO=1;
-    private Button boton;
+    private int ACTIVITY_THREE=2;
+    private Button boton, botonDesc;
     private TextView texto;
 
 
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == ACTIVITY_TWO && resultCode== Activity.RESULT_OK){
             texto.setText("Has clicado: "+ data.getIntExtra("result",-1)+ " veces");
         }
+        if(requestCode == ACTIVITY_THREE && resultCode== Activity.RESULT_OK){
+            texto.setText("Quedan: "+ data.getIntExtra("result",-1)+ " veces");
+        }
     }
 
     @Override
@@ -29,8 +33,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         boton = findViewById(R.id.boton1);
+        botonDesc=findViewById(R.id.boton2);
         texto = findViewById(R.id.textoInicio);
         boton.setText("Ir al contador");
+
+        botonDesc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, activity_3.class);
+                startActivityForResult(intent, ACTIVITY_THREE);
+            }
+        });
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
